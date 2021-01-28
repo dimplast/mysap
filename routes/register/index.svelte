@@ -21,11 +21,13 @@
 	async function submit(event) {
 		const response = await post(`auth/register`, { username, email, password });
 
+		console.log(response)
 		// TODO handle network errors
 		errors = response.errors;
 
-		if (response.user) {
-			$session.user = response.user;
+		if (response.username) {
+			$session.user = response.username;
+			console.log($session.user)
 			goto('/');
 		}
 	}
